@@ -1,0 +1,34 @@
+[project]
+name = "interview-agent"
+version = "1.0.0"
+description = "完整工程级 AI 模拟面试官：多 Agent 协作 + RAG 多路召回 + MCP + 记忆系统"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Interview Agent Team" }]
+keywords = ["AI", "Agent", "Interview", "RAG", "LangGraph", "LlamaIndex"]
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true

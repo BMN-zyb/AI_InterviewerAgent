@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# 虚拟环境
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 环境与敏感文件
+.env
+.env.local
+
+# 数据与缓存
+data/
+logs/
+*.db
+*.sqlite3
+uploads/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 测试与覆盖
+.coverage
+htmlcov/
+.pytest_cache/
+
+# 节点（前端工具）
+node_modules/

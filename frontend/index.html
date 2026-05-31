@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI 模拟面试官 · InterviewAgent</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+
+<!-- ══ 顶部导航 ══════════════════════════════════════════════════════════ -->
+<header class="navbar">
+  <div class="nav-brand">🎯 AI 模拟面试官</div>
+  <div class="nav-right">
+    <span id="conn-status" class="badge badge-grey">未连接</span>
+    <span id="session-badge" class="badge badge-blue" style="display:none"></span>
+    <button class="btn btn-sm btn-ghost" id="rag-btn"
+            onclick="App.openRagPanel()" style="display:none"
+            title="查看 RAG 检索结果">🔍 RAG</button>
+    <button class="btn btn-sm btn-ghost" id="memory-btn"
+            onclick="App.openMemoryPanel()" style="display:none"
+            title="查看短期/长期记忆">🧠 记忆</button>
+    <button class="btn btn-sm btn-danger-outline" id="finish-early-btn"
+            onclick="App.confirmForceFinish()" style="display:none"
+            title="提前结束面试并生成报告">⏹ 结束面试</button>
+  </div>
+</header>
+
+<!-- ══ 主体布局 ════════════════════════════════════════════════════════ -->
+<main class="layout">
+
+  <!-- ── 左栏 ─────────────────────────────────────────────────────── -->
+  <aside class="sidebar">
+
+    <!-- 配置面板 -->
+    <section class="card" id="config-panel">
+      <h2>📋 面试配置</h2>
+
+      <label>岗位 JD <span class="req">*</span></label>
+      <textarea id="jd-input" rows="8"
+        placeholder="粘贴岗位描述（JD）..."></textarea>
+
+      <label>简历内容（可选）</label>
+      <textarea id="resume-input" rows="5"
+        placeholder="粘贴简历文本，或上传文件..."></textarea>
+
+      <label>上传简历文件（PDF / DOCX / TXT）</label>
+      <div class="upload-area">
+        <input type="file" id="resume-file"
+               accept=".pdf,.docx,.doc,.txt,.md" hidden/>
+        <button class="btn btn-outline btn-sm"
+                onclick="document.getElementById('resume-file').click()">
+          📎 选择文件
+        </button>
+        <span id="upload-filename" class="dim">未选择</span>
+      </div>
+
+      <label>出题数量：<strong id="q-count">5</strong> 题</label>
+      <input type="range" id="total-questions" min="3" max="15" value="5"
+             oninput="document.getElementById('q-count').textContent=this.value"/>
+
+      <label>TTS 音色</label>
+      <select id="voice-select">
+        <option value="longxiaochun">龙小淳（女·温柔）</option>
+        <option value="longxiaoxia">龙小夏（女·活泼）</option>
+        <option value="longjiangwai">龙江外（男·沉稳）</option>
+        <option value="longyue">龙悦（女·专业）</option>
+        <option value="">关闭语音</option>
+      </select>
+
+      <button class="btn btn-primary" id="start-btn"
+              onclick="App.startInterview()">
+        🚀 开始面试
+      </button>
+    </section>
+
+    <!-- 技能面板（面试中显示） -->
+    <section class="card" id="skill-panel" style="display:none">
+      <h2>🛠️ 技能模块</h2>
+      <p class="dim" style="font-size:12px;margin-bottom:6px">
+        点击技能，在弹窗中输入参数并执行
+      </p>
+      <div class="skill-grid">
+        <button class="btn btn-sm btn-skill"
+                onclick="App.openSkill('quiz')">📝 快速测验</button>
+        <button class="btn btn-sm btn-skill"
+                onclick="App.openSkill('teach')">📖 知识讲解</button>
+        <button class="btn btn-sm btn-skill"
+                onclick="App.openSkill('project')">💡 项目亮点</button>
+        <button class="btn btn-sm btn-skill"
+                onclick="App.openSkill('compare')">⚖️ 技术对比</button>
+      </div>
+      <div style="margin-top:8px">
+        <button class="btn btn-sm btn-outline" id="camera-btn"
+                onclick="App.toggleCamera()">📷 开启摄像头</button>
+      </div>
+      <div class="camera-wrap" id="camera-wrap" style="display:none">
+        <video id="camera-video" autoplay muted playsinline></video>
+      </div>
+    </section>
+
+  </aside>
+
+  <!-- ── 右栏：面试区 ─────────────────────────────────────────────── -->
+  <div class="interview-area">
+
+    <!-- 欢迎屏 -->
+    <div class="welcome-screen" id="welcome-screen">
+      <div class="welcome-icon">🎙️</div>
+      <h1>欢迎使用 AI 模拟面试官</h1>
+      <p>填写左侧配置，点击「开始面试」</p>
+      <ul class="feature-list">
+        <li>✅ JD 智能解析 + 简历深度匹配</li>
+        <li>✅ RAG 多路召回 + LLM Rerank</li>
+        <li>✅ 动态难度自适应（简单/中等/困难）</li>
+        <li>✅ 语音输入 + TTS 语音朗读</li>
+        <li>✅ 多维评估报告 + 个性化复习计划</li>
+        <li>✅ MCP GitHub 学习资源推荐</li>
+        <li>✅ 短期/长期记忆系统</li>
+      </ul>
+    </div>
+
+    <!-- 进度条 -->
+    <div class="progress-bar-wrap" id="progress-wrap" style="display:none">
+      <div class="progress-info">
+        <span id="progress-text">第 0 / 5 题</span>
+        <span id="difficulty-badge" class="badge badge-blue">中等</span>
+        <span id="tts-indicator" class="badge badge-grey" style="display:none">
+          🔊 播放中
+        </span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- 对话区 -->
+    <div class="chat-box" id="chat-box"></div>
+
+    <!-- 思考条（非遮罩，不阻塞交互） -->
+    <div class="thinking-bar" id="thinking-bar" style="display:none">
+      <div class="thinking-dots">
+        <span></span><span></span><span></span>
+      </div>
+      <span id="thinking-text">AI 正在思考...</span>
+    </div>
+
+    <!-- 输入区 -->
+    <div class="input-area" id="input-area" style="display:none">
+      <div class="input-row">
+        <textarea id="answer-input" rows="3"
+                  placeholder="输入你的回答... (Enter 发送，Shift+Enter 换行)"
+                  onkeydown="App.handleKeydown(event)"></textarea>
+        <div class="input-btns">
+          <button class="btn btn-icon" id="mic-btn"
+                  title="按住录音，松开后识别（结果填入输入框，需手动发送）"
+                  onmousedown="App.startRecording(event)"
+                  onmouseup="App.stopRecording()"
+                  ontouchstart="App.startRecording(event)"
+                  ontouchend="App.stopRecording()">🎤</button>
+          <button class="btn btn-primary send-btn" id="send-btn"
+                  onclick="App.submitAnswer()">发送 ↵</button>
+        </div>
+      </div>
+      <div class="input-hint">
+        Enter 发送 · Shift+Enter 换行 · 按住🎤语音输入（松开后识别填入框，手动发送）
+      </div>
+    </div>
+
+  </div><!-- /interview-area -->
+</main>
+
+<!-- ══ 确认结束面试弹窗 ════════════════════════════════════════════════ -->
+<div class="modal-mask" id="confirm-modal" style="display:none"
+     onclick="App.closeConfirmModal(event)">
+  <div class="modal modal-sm" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3>⏹ 确认结束面试？</h3>
+      <button class="modal-close" onclick="App.closeConfirmModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--dim);font-size:14px;margin-bottom:4px">
+        将结束当前面试并生成评估报告，剩余题目将跳过。
+      </p>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-danger" style="flex:1"
+                onclick="App.doForceFinish()">确认结束</button>
+        <button class="btn btn-outline" style="flex:1"
+                onclick="App.closeConfirmModal()">继续面试</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 技能弹窗 ════════════════════════════════════════════════════════ -->
+<div class="modal-mask" id="skill-modal" style="display:none"
+     onclick="App.closeSkillModal(event)">
+  <div class="modal modal-skill" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3 id="modal-title">技能</h3>
+      <button class="modal-close" onclick="App.closeSkillModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="skill-examples" id="skill-examples"></div>
+      <div class="skill-input-row">
+        <input type="text" id="modal-input" class="modal-input"
+               placeholder="输入参数..."
+               onkeydown="if(event.key==='Enter')App.runSkill()"/>
+        <button class="btn btn-primary" id="modal-run-btn"
+                onclick="App.runSkill()">执行</button>
+      </div>
+    </div>
+    <div class="modal-result-wrap" id="modal-result-wrap" style="display:none">
+      <div class="modal-result-header">
+        <span class="modal-result-label">AI 回答</span>
+        <button class="btn btn-sm btn-ghost"
+                onclick="App.speakSkillResult()"
+                title="朗读此回答">🔊 朗读</button>
+      </div>
+      <div class="modal-result" id="modal-result"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 报告弹窗 ════════════════════════════════════════════════════════ -->
+<div class="modal-mask" id="report-modal" style="display:none"
+     onclick="App.closeReportModal(event)">
+  <div class="modal modal-lg" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3>📊 面试评估报告</h3>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm btn-outline"
+                onclick="App.restartInterview()">🔄 再来一次</button>
+        <button class="modal-close" onclick="App.closeReportModal()">✕</button>
+      </div>
+    </div>
+    <div class="modal-body" id="report-content"></div>
+  </div>
+</div>
+
+<!-- ══ 记忆弹窗 ════════════════════════════════════════════════════════ -->
+<div class="modal-mask" id="memory-modal" style="display:none"
+     onclick="App.closeMemoryPanel(event)">
+  <div class="modal modal-memory" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3>🧠 记忆系统</h3>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm btn-ghost"
+                onclick="App.refreshMemory()"
+                title="从服务端拉取最新数据">🔄 刷新</button>
+        <button class="btn btn-sm btn-danger-outline"
+                onclick="App.confirmClearMemory()"
+                title="清除所有历史薄弱点记录">🗑️ 清除长期记忆</button>
+        <button class="modal-close" onclick="App.closeMemoryPanel()">✕</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="memory-tabs">
+        <button class="mem-tab active"
+                onclick="App.switchMemTab('short',this)">
+          ⚡ 短期记忆（本次）
+        </button>
+        <button class="mem-tab"
+                onclick="App.switchMemTab('long',this)">
+          💾 长期记忆（历史）
+        </button>
+      </div>
+      <div class="memory-content" id="memory-content">
+        <div class="dim" style="text-align:center;padding:24px">加载中...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RAG 检索结果弹窗 ════════════════════════════════════════════════ -->
+<div class="modal-mask" id="rag-modal" style="display:none"
+     onclick="App.closeRagModal(event)">
+  <div class="modal modal-lg" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3>🔍 RAG 检索结果</h3>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm btn-ghost"
+                onclick="App.refreshRag()"
+                title="重新拉取">🔄 刷新</button>
+        <button class="modal-close" onclick="App.closeRagModal()">✕</button>
+      </div>
+    </div>
+    <div class="modal-body" id="rag-content">
+      <div class="dim" style="text-align:center;padding:24px">加载中...</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Toast 容器 ════════════════════════════════════════════════════ -->
+<div id="toast-container"></div>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+# ============ 核心 AI 框架 ============
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
+langgraph>=0.2.0
+langchain-openai>=0.1.0
+langchain-dashscope>=0.1.0
+
+# ============ LlamaIndex RAG ============
+llama-index>=0.10.0
+llama-index-core>=0.10.0
+llama-index-embeddings-dashscope>=0.1.0
+llama-index-llms-dashscope>=0.1.0
+llama-index-vector-stores-weaviate>=0.1.0
+llama-index-retrievers-bm25>=0.1.0
+llama-index-postprocessor-rankgpt-rerank>=0.1.0
+
+# ============ RAG 评估 ============
+ragas>=0.1.0
+datasets>=2.18.0
+
+# ============ 向量库与检索 ============
+weaviate-client>=4.5.0
+rank-bm25>=0.2.2
+
+# ============ 大模型与 Embedding ============
+dashscope>=1.17.0
+openai>=1.30.0
+tiktoken>=0.7.0
+
+# ============ 文件处理 ============
+pypdf>=4.2.0
+python-docx>=1.1.0
+beautifulsoup4>=4.12.0
+requests>=2.31.0
+httpx>=0.27.0
+
+# ============ Web 框架 ============
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+python-multipart>=0.0.9
+sse-starlette>=2.1.0
+
+# ============ 存储 ============
+redis>=5.0.0
+SQLAlchemy>=2.0.30
+PyMySQL>=1.1.0
+alembic>=1.13.0
+cryptography>=42.0.0
+
+# ============ 音视频 ============
+faster-whisper>=1.0.0
+numpy>=1.26.0
+scipy>=1.13.0
+
+# ============ MCP 协议 ============
+mcp>=1.0.0
+anyio>=4.4.0
+
+# ============ CLI ============
+typer[all]>=0.12.0
+rich>=13.7.0
+
+# ============ 工具库 ============
+python-dotenv>=1.0.0
+loguru>=0.7.0
+tenacity>=8.3.0
+PyYAML>=6.0.1
+jinja2>=3.1.4
