@@ -745,3 +745,6 @@ curl -X POST http://localhost:8000/api/interview/start \
 [MIT](LICENSE) © 2026 InterviewAgent
 
 # 代码部分由AI生成。
+
+
+## 欢迎贡献代码，提出问题和建议。如果你发现了bug或者有新的功能想法，请提交一个Issue让我知道。你也可以通过Fork项目并提交Pull Request来贡献代码。 如果你喜欢这个项目，欢迎给它一个星星⭐，这是对我最大的支持！
