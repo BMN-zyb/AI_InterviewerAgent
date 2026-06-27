@@ -1,5 +1,7 @@
 <div align="center">
 
+## 请给我免费的star⭐吧，十分感谢！
+
 # 🎯 InterviewAgent · AI 模拟面试官
 
 **一个完整工程级的 AI Agent 应用**
