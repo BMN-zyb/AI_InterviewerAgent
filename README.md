@@ -1,6 +1,6 @@
 <div align="center">
 
-## 请给我免费的star⭐吧，十分感谢！
+# 请给我免费的star⭐吧，十分感谢！
 
 # 🎯 InterviewAgent · AI 模拟面试官
 
