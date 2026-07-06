@@ -756,7 +756,6 @@ curl -X POST http://localhost:8000/api/interview/start \
 
 
 
-## Star History
 
 <h2 align="center">Star History</h2>
 
