@@ -747,14 +747,14 @@ curl -X POST http://localhost:8000/api/interview/start \
 
 <div align="center">
 
-<a href="https://www.star-history.com/?type=date&repos=BMN-zyb%2FAI_InterviewerAgent">
+[<a href="https://www.star-history.com/?type=date&repos=BMN-zyb%2FAI_InterviewerAgent">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=BMN-zyb/AI_InterviewerAgent&type=Date&theme=dark" />
    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=BMN-zyb/AI_InterviewerAgent&type=Date" />
    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=BMN-zyb/AI_InterviewerAgent&type=Date" />
  </picture>
 </a>
-
+](https://www.star-history.com/?type=date&repos=BMN-zyb%2FAI_InterviewerAgent)
 </div>
 
 
