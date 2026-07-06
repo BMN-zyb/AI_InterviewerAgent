@@ -745,11 +745,11 @@ curl -X POST http://localhost:8000/api/interview/start \
 
 # Star History
 
-<a href="https://www.star-history.com/msitarzewski/agency-agents">
+<a href="https://www.star-history.com/?repos=BMN-zyb%2FAI_InterviewerAgent&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=msitarzewski/agency-agents&style=landscape1&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=msitarzewski/agency-agents&style=landscape1" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=msitarzewski/agency-agents&style=landscape1" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=date&legend=top-left" />
  </picture>
 </a>
 
