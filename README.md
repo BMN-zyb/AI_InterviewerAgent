@@ -755,8 +755,7 @@ curl -X POST http://localhost:8000/api/interview/start \
 # 如果你觉得我的开源项目对你有帮助，可以赞助我一杯咖啡嘛，十分感谢！！！
 
 
+
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BD%A0%E7%9A%84%E4%BB%93%E5%BA%93%E5%90%8D&type=Date)](https://star-history.com/#BMN-zyb
-/AI_InterviewerAgent&Date)
-
+[![Star History Chart](https://api.star-history.com/svg?repos=myname/myproject&type=Date)](https://star-history.com/#BMN-zyb/AI_InterviewerAgent&Date)
