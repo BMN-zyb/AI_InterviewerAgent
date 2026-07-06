@@ -758,4 +758,4 @@ curl -X POST http://localhost:8000/api/interview/start \
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=myname/myproject&type=Date)](https://star-history.com/#BMN-zyb/AI_InterviewerAgent&Date)
+https://www.star-history.com/?type=date&repos=BMN-zyb%2FAI_InterviewerAgent
