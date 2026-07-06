@@ -745,23 +745,13 @@ curl -X POST http://localhost:8000/api/interview/start \
 
 # Star History
 
-<a href="https://www.star-history.com/?repos=BMN-zyb%2FAI_InterviewerAgent&type=timeline&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=timeline&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=timeline&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=timeline&legend=top-left" />
- </picture>
-</a>
-
-
-
 <div align="center">
 
-<a href="https://star-history.com/#Yanyutin753/LambChat&Date">
+<a href="https://star-history.com/#BMN-zyb/AI_InterviewerAgent&Date">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Yanyutin753/LambChat&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Yanyutin753/LambChat&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Yanyutin753/LambChat&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=BMN-zyb/AI_InterviewerAgent&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=BMN-zyb/AI_InterviewerAgent&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=BMN-zyb/AI_InterviewerAgent&type=Date" />
  </picture>
 </a>
 
