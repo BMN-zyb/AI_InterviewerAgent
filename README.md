@@ -758,6 +758,12 @@ curl -X POST http://localhost:8000/api/interview/start \
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=timeline&logscale&legend=top-left)](https://www.star-history.com/?repos=BMN-zyb%2FAI_InterviewerAgent&type=timeline&logscale=&legend=top-left)
+<h2 align="center">Star History</h2>
+
+<p align="center">
+  <a href="https://star-history.com/#BMN-zyb/AI_InterviewerAgent&Date">
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=BMN-zyb/AI_InterviewerAgent&type=Date" />
+  </a>
+</p>
 
 
