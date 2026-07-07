@@ -747,9 +747,9 @@ curl -X POST http://localhost:8000/api/interview/start \
 
 <a href="https://www.star-history.com/?repos=BMN-zyb%2FAI_InterviewerAgent&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=date&theme=dark&legend=top-left&sealed_token=aua8vCVy2yOPQcbL4A8cXFnnSsTxUvJsd38JhzOjP3qVizgdbppbckT16DDLtd7YX040mLmjUIM0r1swr6nZUN89EuX0DrVwTwe42JUyvnGqmbP8qyzvokMdKBtgoZJDjeYw0WrOlzXIDYcR475OMOvtg7KE40y1grSaekDMG0KTBEAwnRDO8AFuvBcM" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=date&legend=top-left&sealed_token=aua8vCVy2yOPQcbL4A8cXFnnSsTxUvJsd38JhzOjP3qVizgdbppbckT16DDLtd7YX040mLmjUIM0r1swr6nZUN89EuX0DrVwTwe42JUyvnGqmbP8qyzvokMdKBtgoZJDjeYw0WrOlzXIDYcR475OMOvtg7KE40y1grSaekDMG0KTBEAwnRDO8AFuvBcM" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=BMN-zyb/AI_InterviewerAgent&type=date&legend=top-left&sealed_token=aua8vCVy2yOPQcbL4A8cXFnnSsTxUvJsd38JhzOjP3qVizgdbppbckT16DDLtd7YX040mLmjUIM0r1swr6nZUN89EuX0DrVwTwe42JUyvnGqmbP8qyzvokMdKBtgoZJDjeYw0WrOlzXIDYcR475OMOvtg7KE40y1grSaekDMG0KTBEAwnRDO8AFuvBcM" />
  </picture>
 </a>
 
